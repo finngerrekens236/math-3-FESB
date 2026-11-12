@@ -8,6 +8,7 @@
 | 2026-11-12 | Setup | MiKTeX 25.12 + `MathTex`-test | ✅ werkt |
 | 2026-11-12 | Overzicht | `topics/README.md` + 8 topic-bestanden | ✅ klaar |
 | 2026-11-13 | 16.1 Line integrals (scalar) | `scenes/16_1_line_integrals_scalar.py` · 3 scenes | ✅ gerenderd (-ql) |
+| 2026-11-13 | Setup | manim-voiceover 0.4.0 + gTTS · `scenes/test_voiceover.py` · `TestVoiceover` | ✅ gerenderd (-ql), audio OK |
 
 ## Begrip per topic
 
