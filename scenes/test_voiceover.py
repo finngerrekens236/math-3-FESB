@@ -1,15 +1,20 @@
-"""Test-scene: controleert manim-voiceover + gTTS (Engelse stem)."""
+"""Test-scene: manim-voiceover + Kokoro (lokaal). Twee stemmen om uit te kiezen."""
 from manim import *
 from manim_voiceover import VoiceoverScene
-from manim_voiceover.services.gtts import GTTSService
+
+from _tts import kokoro
+
+TEXT = "This is a test of the voiceover. The circle appears while I speak."
 
 
 class TestVoiceover(VoiceoverScene):
-    def construct(self):
-        self.set_speech_service(GTTSService(lang="en"))
+    voice = "af_heart"  # American English, female
 
-        circle = Circle(color=BLUE)
-        with self.voiceover(
-            text="This is a test of the voiceover. The circle appears while I speak."
-        ) as tracker:
-            self.play(Create(circle), run_time=tracker.duration)
+    def construct(self):
+        self.set_speech_service(kokoro(self.voice))
+        with self.voiceover(text=TEXT) as tracker:
+            self.play(Create(Circle(color=BLUE)), run_time=tracker.duration)
+
+
+class TestVoiceoverMale(TestVoiceover):
+    voice = "am_michael"  # American English, male

@@ -7,6 +7,9 @@
 - [x] Voiceover-setup (manim-voiceover + gTTS)
 - [x] Voiceover toevoegen aan 16.1-scenes
 - [ ] Voiceover-tekst 16.1 nalezen (Finn) — dict `VO` in de scene
+- [x] Kokoro-voiceover (lokaal) installeren + testscenes
+- [ ] Stem kiezen: `af_heart` of `am_michael` (Finn) → `VOICE` in `scenes/_tts/__init__.py`
+- [ ] 16.1-scenes omzetten van gTTS naar Kokoro
 - [ ] Scene 16.2 vector fields, work, circulation, flux (HW2, due 20-11-2026)
 - [ ] Scene 16.3 conservative fields (HW2)
 - [ ] Scene 16.4 Green's theorem (HW2)
