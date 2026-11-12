@@ -12,8 +12,10 @@ Repo met Manim Community-animaties bij het vak Math 3 (FESB).
 ## Omgeving
 - Python 3.12, virtualenv in `.venv/` (`.venv\Scripts\activate` of `.venv/Scripts/manim`).
 - Manim Community (`from manim import *`) — **niet** ManimGL / 3b1b-manim.
-- ffmpeg: aanwezig. LaTeX (MiKTeX): nodig voor `MathTex`/`Tex`; check `latex --version`.
-  Zonder LaTeX: alleen `Text`/`MarkupText` gebruiken.
+- ffmpeg: aanwezig. LaTeX: MiKTeX 25.12 (user-install, AutoInstall=1 voor ontbrekende pakketten),
+  `C:\Users\Gebruiker\AppData\Local\Programs\MiKTeX\miktex\bin\x64` staat in user-PATH.
+- Altijd renderen vanuit de repo-root met de standaard (relatieve) `media/`-map. Een absolute
+  `--media_dir` met 8.3-kort pad (`GEBRUI~1`) laat `MathTex` falen ("latex failed but did not produce a log file").
 
 ## Werkwijze voor "TAAK VOOR CLAUDE CODE"-blokken
 Als de gebruiker een blok met kop **TAAK VOOR CLAUDE CODE** plakt:
