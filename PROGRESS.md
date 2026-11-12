@@ -9,6 +9,7 @@
 | 2026-11-12 | Overzicht | `topics/README.md` + 8 topic-bestanden | ✅ klaar |
 | 2026-11-13 | 16.1 Line integrals (scalar) | `scenes/16_1_line_integrals_scalar.py` · 3 scenes | ✅ gerenderd (-ql) |
 | 2026-11-13 | Setup | manim-voiceover 0.4.0 + gTTS · `scenes/test_voiceover.py` · `TestVoiceover` | ✅ gerenderd (-ql), audio OK |
+| 2026-11-13 | 16.1 Line integrals (scalar) | voiceover toegevoegd aan alle 3 scenes (tekst door Claude, in `VO`) | ✅ gerenderd (-ql), audio synchroon |
 
 ## Begrip per topic
 

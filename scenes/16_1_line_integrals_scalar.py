@@ -4,15 +4,19 @@ Running example:  C: r(t) = (2 cos t, 2 sin t), 0 <= t <= pi/2  (quarter circle)
                   f(x, y) = x y
                   int_C f ds = 4
 
-Scenes:
+Scenes (all with English voiceover, gTTS):
   LineIntegralIdea         Riemann sum  sum f(P_k) ds_k  along the curve -> integral
   LineIntegralFence        3D: int_C f ds = area of the "fence" with height f above C
   LineIntegralComputation  step-by-step evaluation via parametrisation
+
+Voiceover text: edit the VO dict below.
 
 Render (from repo root):
   .venv/Scripts/manim -ql scenes/16_1_line_integrals_scalar.py LineIntegralIdea
 """
 from manim import *
+from manim_voiceover import VoiceoverScene
+from manim_voiceover.services.gtts import GTTSService
 import numpy as np
 
 # --- example ---------------------------------------------------------------
@@ -36,6 +40,43 @@ C_CURVE = BLUE
 C_LOW, C_HIGH = BLUE, YELLOW  # colour scale for f
 C_DS = GREEN
 
+# --- voiceover text (English, one entry per animation step) ----------------
+VO = {
+    "idea": [
+        "Section sixteen point one: line integrals of scalar functions. "
+        "We want to integrate the function f of x y equals x times y "
+        "along a curve C: a quarter circle of radius two.",
+        "First, we chop the curve into small pieces.",
+        "Each piece has a length, delta s k. Inside each piece we pick a point, P k.",
+        "We multiply the value of f at P k by the length of the piece, and add everything up. "
+        "The colour shows how large f is.",
+        "With more and more pieces, the sum settles down to four.",
+        "The limit of these sums is the line integral of f over C, "
+        "written as the integral of f d s. Here it equals four.",
+    ],
+    "fence": [
+        "There is also a nice picture of this integral.",
+        "Here is the curve C, lying in the x y plane.",
+        "Above every point of the curve, we raise a wall up to height f of x y.",
+        "The top edge follows the function along the curve.",
+        "Together, these walls form a fence.",
+        "When f is positive, the line integral is exactly the area of this fence. "
+        "So this fence has area four.",
+        "Notice that the base is measured along the curve itself, not along the x axis.",
+    ],
+    "computation": [
+        "To compute a line integral, we parametrise the curve and use this formula: "
+        "the integral of f of r of t, times the length of r prime of t, d t.",
+        "Step one: parametrise C. We use two cos t, two sin t, for t from zero to pi over two.",
+        "Step two: differentiate. The speed, the length of r prime of t, equals two.",
+        "Step three: so d s equals two d t.",
+        "Step four: substitute x equals two cos t and y equals two sin t into f.",
+        "Step five: evaluate. Eight times the integral of sine times cosine "
+        "gives eight times one half, which is four.",
+        "The most common mistake: forgetting the factor, the length of r prime of t.",
+    ],
+}
+
 
 def f_color(t):
     return interpolate_color(C_LOW, C_HIGH, f(*r(t)) / F_MAX)
@@ -50,11 +91,12 @@ def riemann_sum(n):
     return total
 
 
-class LineIntegralIdea(Scene):
+class LineIntegralIdea(VoiceoverScene):
     def construct(self):
-        title = Text("16.1  Line integral of a scalar function", font_size=36).to_edge(UP)
-        self.play(Write(title))
+        self.set_speech_service(GTTSService(lang="en"))
+        vo = VO["idea"]
 
+        title = Text("16.1  Line integral of a scalar function", font_size=36).to_edge(UP)
         axes = Axes(
             x_range=[0, 2.5, 1], y_range=[0, 2.5, 1],
             x_length=5, y_length=5, tips=False,
@@ -70,9 +112,11 @@ class LineIntegralIdea(Scene):
         ).arrange(DOWN, aligned_edge=LEFT).scale(0.8)
         info.to_edge(RIGHT, buff=0.6).shift(UP * 1.6)
 
-        self.play(Create(axes), FadeIn(info))
-        self.play(Create(curve), Write(c_label))
-        self.wait(0.5)
+        with self.voiceover(text=vo[0]) as tracker:
+            d = tracker.duration / 3
+            self.play(Write(title), run_time=d)
+            self.play(Create(axes), FadeIn(info), run_time=d)
+            self.play(Create(curve), Write(c_label), run_time=d)
 
         # --- Riemann sum --------------------------------------------------
         def pieces(n):
@@ -94,7 +138,8 @@ class LineIntegralIdea(Scene):
         readout.next_to(info, DOWN, buff=0.4, aligned_edge=LEFT)
 
         cur = pieces(4)
-        self.play(FadeOut(curve), Create(cur[0]), FadeIn(cur[1]))
+        with self.voiceover(text=vo[1]) as tracker:
+            self.play(FadeOut(curve), Create(cur[0]), FadeIn(cur[1]), run_time=tracker.duration)
 
         # explain one piece
         seg = cur[0][1]
@@ -102,23 +147,28 @@ class LineIntegralIdea(Scene):
                               label_constructor=MathTex, font_size=30)
         ds_brace.set_color(C_DS)
         pk = MathTex("P_k", font_size=30).next_to(cur[1][1], DL, buff=0.1)
-        self.play(FadeIn(ds_brace), Write(pk))
+        with self.voiceover(text=vo[2]) as tracker:
+            d = tracker.duration / 2
+            self.play(FadeIn(ds_brace), run_time=d)
+            self.play(Write(pk), run_time=d)
 
         hint = Tex(r"colour = value of $f$ at $P_k$", font_size=30, color=GRAY_B)
         hint.next_to(axes, DOWN, buff=0.3)
-        self.play(FadeIn(hint), Write(readout))
-        self.wait(1)
-        self.play(FadeOut(ds_brace), FadeOut(pk))
+        with self.voiceover(text=vo[3]) as tracker:
+            self.play(Write(readout), run_time=tracker.duration * 0.6)
+            self.play(FadeIn(hint), run_time=tracker.get_remaining_duration())
+        self.play(FadeOut(ds_brace), FadeOut(pk), run_time=0.5)
 
-        for n in [8, 16, 40]:
-            new = pieces(n)
-            self.play(
-                Transform(cur, new),
-                n_val.animate.set_value(n),
-                s_val.animate.set_value(riemann_sum(n)),
-                run_time=1.2,
-            )
-            self.wait(0.5)
+        with self.voiceover(text=vo[4]) as tracker:
+            ns = [8, 16, 40]
+            d = tracker.duration / len(ns)
+            for n in ns:
+                self.play(
+                    Transform(cur, pieces(n)),
+                    n_val.animate.set_value(n),
+                    s_val.animate.set_value(riemann_sum(n)),
+                    run_time=d,
+                )
 
         # --- limit -> integral ---------------------------------------------
         limit = MathTex(
@@ -127,13 +177,17 @@ class LineIntegralIdea(Scene):
         limit.next_to(readout, DOWN, buff=0.45, aligned_edge=LEFT)
         limit.shift(LEFT * max(0, limit.get_right()[0] - (config.frame_width / 2 - 0.3)))
         box = SurroundingRectangle(limit, color=YELLOW, buff=0.15)
-        self.play(Write(limit))
-        self.play(Create(box))
-        self.wait(2)
+        with self.voiceover(text=vo[5]) as tracker:
+            self.play(Write(limit), run_time=tracker.duration * 0.75)
+            self.play(Create(box), run_time=tracker.get_remaining_duration())
+        self.wait(1)
 
 
-class LineIntegralFence(ThreeDScene):
+class LineIntegralFence(VoiceoverScene, ThreeDScene):
     def construct(self):
+        self.set_speech_service(GTTSService(lang="en"))
+        vo = VO["fence"]
+
         axes = ThreeDAxes(
             x_range=[0, 2.5, 1], y_range=[0, 2.5, 1], z_range=[0, 2.5, 1],
             x_length=5, y_length=5, z_length=4, tips=False,
@@ -144,13 +198,17 @@ class LineIntegralFence(ThreeDScene):
 
         title = Text("Line integral = area of the fence", font_size=34).to_edge(UP)
         self.add_fixed_in_frame_mobjects(title)
-        self.play(Write(title))
+        title.set_opacity(0)
 
-        self.play(Create(axes), FadeIn(labels))
+        with self.voiceover(text=vo[0]) as tracker:
+            d = tracker.duration / 2
+            self.play(title.animate.set_opacity(1), run_time=d)
+            self.play(Create(axes), FadeIn(labels), run_time=d)
 
         curve = ParametricFunction(lambda t: axes.c2p(*r(t), 0), t_range=[T0, T1], color=C_CURVE)
         curve.set_stroke(width=6)
-        self.play(Create(curve))
+        with self.voiceover(text=vo[1]) as tracker:
+            self.play(Create(curve), run_time=tracker.duration)
 
         top = ParametricFunction(lambda t: axes.c2p(*r(t), f(*r(t))), t_range=[T0, T1], color=C_HIGH)
         top.set_stroke(width=5)
@@ -160,8 +218,10 @@ class LineIntegralFence(ThreeDScene):
             Line(axes.c2p(*r(t), 0), axes.c2p(*r(t), f(*r(t))), color=f_color(t), stroke_width=4)
             for t in np.linspace(T0, T1, 13)
         ])
-        self.play(LaggedStart(*[Create(b) for b in bars], lag_ratio=0.1))
-        self.play(Create(top))
+        with self.voiceover(text=vo[2]) as tracker:
+            self.play(LaggedStart(*[Create(b) for b in bars], lag_ratio=0.1), run_time=tracker.duration)
+        with self.voiceover(text=vo[3]) as tracker:
+            self.play(Create(top), run_time=tracker.duration)
 
         fence = Surface(
             lambda u, v: axes.c2p(*r(u), v * f(*r(u))),
@@ -169,31 +229,39 @@ class LineIntegralFence(ThreeDScene):
             fill_opacity=0.55, checkerboard_colors=[YELLOW_D, YELLOW_E],
             stroke_width=0.5, stroke_color=YELLOW_A,
         )
-        self.play(FadeIn(fence), FadeOut(bars))
+        with self.voiceover(text=vo[4]) as tracker:
+            self.play(FadeIn(fence), FadeOut(bars), run_time=tracker.duration)
 
         formula = MathTex(r"\int_C f\,ds", r"=\ \text{area}", r"=\ 4").scale(0.9)
         sub = MathTex(r"\text{height} = f(x,y) = xy,\quad \text{base} = C", font_size=32)
         group = VGroup(formula, sub).arrange(DOWN, aligned_edge=LEFT).to_corner(DR)
         self.add_fixed_in_frame_mobjects(group)
-        self.play(Write(formula), FadeIn(sub))
+        group.set_opacity(0)
+        with self.voiceover(text=vo[5]) as tracker:
+            self.play(formula.animate.set_opacity(1), run_time=tracker.duration / 2)
+            self.play(sub.animate.set_opacity(1), run_time=tracker.get_remaining_duration())
 
         self.begin_ambient_camera_rotation(rate=0.25)
-        self.wait(4)
+        with self.voiceover(text=vo[6]) as tracker:
+            self.wait(tracker.duration)
         self.stop_ambient_camera_rotation()
         self.wait(1)
 
 
-class LineIntegralComputation(Scene):
+class LineIntegralComputation(VoiceoverScene):
     def construct(self):
+        self.set_speech_service(GTTSService(lang="en"))
+        vo = VO["computation"]
+
         title = Text("How to compute it", font_size=36).to_edge(UP)
         general = MathTex(
             r"\int_C f\,ds = \int_a^b f\big(\mathbf r(t)\big)\,\lvert\mathbf r'(t)\rvert\,dt"
         )
         general.scale(0.8).next_to(title, DOWN, buff=0.3)
         gbox = SurroundingRectangle(general, color=YELLOW, buff=0.15)
-        self.play(Write(title))
-        self.play(Write(general), Create(gbox))
-        self.wait(1)
+        with self.voiceover(text=vo[0]) as tracker:
+            self.play(Write(title), run_time=tracker.duration * 0.2)
+            self.play(Write(general), Create(gbox), run_time=tracker.get_remaining_duration())
 
         steps = VGroup(
             MathTex(r"1.\ \ \mathbf r(t) = (2\cos t,\ 2\sin t),\quad 0 \le t \le \tfrac{\pi}{2}"),
@@ -211,14 +279,15 @@ class LineIntegralComputation(Scene):
             "substitute x = 2cos t, y = 2sin t",
             "evaluate",
         ]
-        for step, note in zip(steps, notes):
+        for step, note, text in zip(steps, notes, vo[1:6]):
             tag = Text(note, font_size=20, color=GRAY_B).to_edge(DOWN, buff=0.25)
-            self.play(Write(step), FadeIn(tag), run_time=1.2)
-            self.wait(0.8)
+            with self.voiceover(text=text) as tracker:
+                self.play(Write(step), FadeIn(tag), run_time=tracker.duration * 0.8)
             self.play(FadeOut(tag), run_time=0.3)
 
         ans = SurroundingRectangle(steps[-1], color=GREEN, buff=0.12)
         warn = Tex(r"Don't forget $\lvert\mathbf r'(t)\rvert$ !", font_size=34, color=RED)
         warn.next_to(steps[2], RIGHT, buff=1.0)
-        self.play(Create(ans), FadeIn(warn))
-        self.wait(2)
+        with self.voiceover(text=vo[6]) as tracker:
+            self.play(Create(ans), FadeIn(warn), run_time=tracker.duration * 0.5)
+        self.wait(1.5)

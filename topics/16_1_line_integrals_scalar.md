@@ -32,3 +32,8 @@ $\int_C xy\,ds = \int_0^{\pi/2} 4\cos t\sin t\cdot 2\,dt = 8\cdot\tfrac12 = 4$.
 | `LineIntegralIdea` | Riemann-som langs de kromme, $n = 4 \to 40$, convergeert naar 4 |
 | `LineIntegralFence` | 3D: integraal = oppervlakte van het hek |
 | `LineIntegralComputation` | stap-voor-stap berekening |
+
+## Voiceover
+Alle drie de scenes hebben Engelse voiceover (gTTS). De tekst staat in de dict `VO`
+bovenaan `scenes/16_1_line_integrals_scalar.py` — daar aanpassen en opnieuw renderen.
+Duur (-ql): Idea ±50 s, Fence ±35 s, Computation ±58 s.
