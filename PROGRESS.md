@@ -12,10 +12,10 @@
 
 | Topic | Snap ik | Snap ik nog niet | Scene(s) |
 |---|---|---|---|
-| 13.1 Curves in space | | | — |
-| 13.3 Arc length in space | | | — |
-| 14.3 Partial derivatives | | | — |
-| 14.5 Directional derivatives & gradient | | | — |
+| 13.1 Curves in space | ja | | — |
+| 13.3 Arc length in space | ja | | — |
+| 14.3 Partial derivatives | ja| | — |
+| 14.5 Directional derivatives & gradient | ja | | — |
 | 16.1 Line integrals of scalar functions | | | — |
 | 16.2 Vector fields, work, circulation, flux | | | — |
 | 16.3 Path independence, conservative fields, potential functions | | | — |
