@@ -51,7 +51,7 @@ Scenes krijgen Engelse gesproken uitleg via `manim-voiceover` + **Kokoro** (loka
   self.set_speech_service(kokoro())   # gekozen stem = _tts.VOICE
   ```
   Stem wisselen: `VOICE` in `scenes/_tts/__init__.py` aanpassen (niet per scene).
-  Testvarianten: `af_heart` (vrouw, VS) en `am_michael` (man, VS).
+  Gekozen stem: `af_heart` (vrouw, VS). Alternatief getest: `am_michael` (man, VS).
 - De gesproken tekst komt uit het veld **"Voiceover"** in het taakblok — niet zelf verzinnen.
   Ontbreekt het veld: vragen, of (na akkoord) zelf schrijven in een `VO`-dict bovenaan het scenebestand.
 - Kort per stap: één `with self.voiceover(text="...") as tracker:`-blok per animatiestap,
@@ -60,4 +60,3 @@ Scenes krijgen Engelse gesproken uitleg via `manim-voiceover` + **Kokoro** (loka
 - Modelbestanden (±355 MB) worden bij het eerste gebruik gedownload naar `models/kokoro/`;
   gecachte audio staat in `media/voiceovers/`. Beide staan in `.gitignore` — nooit committen.
 - Waarschuwing "SoX could not be found!" kan geen kwaad. Ondertitels (`.srt`) komen naast de video.
-- Oud: 16.1-scenes gebruiken nog gTTS (`GTTSService`, online) — omzetten naar Kokoro staat in TODO.md.

@@ -4,7 +4,7 @@ Running example:  C: r(t) = (2 cos t, 2 sin t), 0 <= t <= pi/2  (quarter circle)
                   f(x, y) = x y
                   int_C f ds = 4
 
-Scenes (all with English voiceover, gTTS):
+Scenes (all with English voiceover, Kokoro af_heart):
   LineIntegralIdea         Riemann sum  sum f(P_k) ds_k  along the curve -> integral
   LineIntegralFence        3D: int_C f ds = area of the "fence" with height f above C
   LineIntegralComputation  step-by-step evaluation via parametrisation
@@ -16,7 +16,7 @@ Render (from repo root):
 """
 from manim import *
 from manim_voiceover import VoiceoverScene
-from manim_voiceover.services.gtts import GTTSService
+from _tts import kokoro
 import numpy as np
 
 # --- example ---------------------------------------------------------------
@@ -93,7 +93,7 @@ def riemann_sum(n):
 
 class LineIntegralIdea(VoiceoverScene):
     def construct(self):
-        self.set_speech_service(GTTSService(lang="en"))
+        self.set_speech_service(kokoro())
         vo = VO["idea"]
 
         title = Text("16.1  Line integral of a scalar function", font_size=36).to_edge(UP)
@@ -185,7 +185,7 @@ class LineIntegralIdea(VoiceoverScene):
 
 class LineIntegralFence(VoiceoverScene, ThreeDScene):
     def construct(self):
-        self.set_speech_service(GTTSService(lang="en"))
+        self.set_speech_service(kokoro())
         vo = VO["fence"]
 
         axes = ThreeDAxes(
@@ -250,7 +250,7 @@ class LineIntegralFence(VoiceoverScene, ThreeDScene):
 
 class LineIntegralComputation(VoiceoverScene):
     def construct(self):
-        self.set_speech_service(GTTSService(lang="en"))
+        self.set_speech_service(kokoro())
         vo = VO["computation"]
 
         title = Text("How to compute it", font_size=36).to_edge(UP)

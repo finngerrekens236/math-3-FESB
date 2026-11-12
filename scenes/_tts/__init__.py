@@ -16,7 +16,7 @@ BASE_URL = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-
 MODEL_FILE = "kokoro-v1.0.onnx"
 VOICES_FILE = "voices-v1.0.bin"
 
-VOICE = "af_heart"  # default voice — change after choosing
+VOICE = "af_heart"  # chosen by Finn (2026-11-13), American English female
 
 
 def _ensure(name: str) -> Path:

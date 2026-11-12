@@ -11,6 +11,7 @@
 | 2026-11-13 | Setup | manim-voiceover 0.4.0 + gTTS · `scenes/test_voiceover.py` · `TestVoiceover` | ✅ gerenderd (-ql), audio OK |
 | 2026-11-13 | 16.1 Line integrals (scalar) | voiceover toegevoegd aan alle 3 scenes (tekst door Claude, in `VO`) | ✅ gerenderd (-ql), audio synchroon |
 | 2026-11-13 | Setup | Kokoro (lokaal) via kokoro-manim-voiceover 0.1.5 · helper `scenes/_tts/` · `TestVoiceover` (af_heart), `TestVoiceoverMale` (am_michael) | ✅ gerenderd (-ql), audio OK |
+| 2026-11-13 | 16.1 Line integrals (scalar) | voiceover omgezet gTTS → Kokoro `af_heart` (gekozen stem) | ✅ gerenderd (-ql), audio synchroon |
 
 ## Begrip per topic
 
