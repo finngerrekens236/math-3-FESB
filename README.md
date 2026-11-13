@@ -16,10 +16,12 @@ winget install MiKTeX.MiKTeX
 
 ## Renderen
 ```powershell
-manim -ql scenes/test.py TestScene   # lage kwaliteit (test)
-manim -qh scenes/test.py TestScene   # hoge kwaliteit
+python render.py scenes/16_1_line_integrals_scalar.py Ex16_1_09         # 720p (standaard)
+python render.py scenes/16_1_line_integrals_scalar.py Ex16_1_09 --low   # 480p (test)
+python render.py scenes/16_1_line_integrals_scalar.py                   # alle scenes uit OUTPUT
 ```
-Output komt in `media/` (niet in git).
+Video's (+ ondertitels) komen in `videos/<topic>/Concept|Exercises/` (niet in git).
+`render.py` gebruikt automatisch de Python uit `.venv`.
 
 ## Structuur
 - `scenes/` — Manim-scenes

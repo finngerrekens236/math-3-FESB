@@ -10,6 +10,10 @@
 - [x] Kokoro-voiceover (lokaal) installeren + testscenes
 - [x] Stem kiezen: `af_heart`
 - [x] 16.1-scenes omzetten van gTTS naar Kokoro
+- [x] `render.py` + mappenstructuur `videos/`
+- [x] Opgave 16.1 Ex 09 (proefvideo)
+- [ ] Feedback Finn op Ex 09 (lengte ±2 min, tempo, 3D-hoek)
+- [ ] Ex 10, 14, 15 maken na feedback Finn op Ex 09
 - [ ] Scene 16.2 vector fields, work, circulation, flux (HW2, due 20-11-2026)
 - [ ] Scene 16.3 conservative fields (HW2)
 - [ ] Scene 16.4 Green's theorem (HW2)

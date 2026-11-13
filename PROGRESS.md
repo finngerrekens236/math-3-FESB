@@ -12,6 +12,9 @@
 | 2026-11-13 | 16.1 Line integrals (scalar) | voiceover toegevoegd aan alle 3 scenes (tekst door Claude, in `VO`) | ✅ gerenderd (-ql), audio synchroon |
 | 2026-11-13 | Setup | Kokoro (lokaal) via kokoro-manim-voiceover 0.1.5 · helper `scenes/_tts/` · `TestVoiceover` (af_heart), `TestVoiceoverMale` (am_michael) | ✅ gerenderd (-ql), audio OK |
 | 2026-11-13 | 16.1 Line integrals (scalar) | voiceover omgezet gTTS → Kokoro `af_heart` (gekozen stem) | ✅ gerenderd (-ql), audio synchroon |
+| 2026-11-13 | Setup | `render.py` + `videos/`-mappen (Concept/Exercises), `videos/` in `.gitignore` | ✅ werkt |
+| 2026-11-13 | 16.1 Line integrals (scalar) | 3 conceptscenes opnieuw gerenderd (-qm) naar `videos/16.1 …/Concept/` | ✅ |
+| 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_09` — opgave 9, proefvideo opgaven-reeks (Kokoro) | ✅ gerenderd (-qm), wacht op feedback Finn |
 
 ## Begrip per topic
 
@@ -21,7 +24,7 @@
 | 13.3 Arc length in space | ja | | — |
 | 14.3 Partial derivatives | ja| | — |
 | 14.5 Directional derivatives & gradient | ja | | — |
-| 16.1 Line integrals of scalar functions | | | `LineIntegralIdea`, `LineIntegralFence`, `LineIntegralComputation` |
+| 16.1 Line integrals of scalar functions | | | `LineIntegralIdea`, `LineIntegralFence`, `LineIntegralComputation`, `Ex16_1_09` |
 | 16.2 Vector fields, work, circulation, flux | | | — |
 | 16.3 Path independence, conservative fields, potential functions | | | — |
 | 16.4 Green's theorem in the plane | | | — |

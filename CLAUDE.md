@@ -25,18 +25,31 @@ Als de gebruiker een blok met kop **TAAK VOOR CLAUDE CODE** plakt:
    - Eén `Scene`-klasse per deelanimatie, duidelijke CamelCase-naam.
    - Formules met `MathTex`; kleuren/constanten bovenaan het bestand.
    - Optioneel: korte uitleg in `topics/<topic>.md`.
-3. **Testrender (lage kwaliteit)** — vanuit de repo-root:
-   `.venv/Scripts/manim -ql scenes/<topic>.py <SceneNaam>`
-   Fouten oplossen tot de render slaagt. Geen hoge kwaliteit renderen tenzij gevraagd
-   (`-qh` / `-qk` alleen op verzoek).
+3. **Testrender (lage kwaliteit)** — via `render.py` (zie "Video's"):
+   `.venv/Scripts/python render.py scenes/<topic>.py <SceneNaam> --low`
+   Fouten oplossen tot de render slaagt; frames controleren op layout.
+   Daarna de eindversie op standaardkwaliteit (`-qm`, 720p): zelfde commando zonder `--low`.
+   `--high` (1080p) alleen op verzoek.
 4. **Bijwerken** — `PROGRESS.md`: regel toevoegen (datum, topic, scene(s), status).
    `TODO.md`: taak afvinken/verwijderen, nieuwe vervolgtaken toevoegen.
 5. **Commit + push** — Conventional Commit, bv. `feat(scenes): add FourierSeries scene`,
    daarna `git push`. `media/` nooit committen.
 
+## Video's
+- **Altijd renderen via `render.py`** (repo-root), nooit los met `manim`:
+  `.venv/Scripts/python render.py scenes/<file>.py [Scene ...] [--low|--high]`
+  Zonder scenenaam: alle scenes uit `OUTPUT`. Standaard `-qm` (720p30).
+- `render.py` rendert naar `media/` en kopieert `.mp4` + `.srt` naar `videos/<pad>`.
+  `videos/` staat in `.gitignore` — nooit committen.
+- **Elke nieuwe scene krijgt een regel in de dict `OUTPUT`** bovenaan het scenebestand:
+  `"Ex16_1_09": "16.1 Line integrals (scalar)/Exercises/Ex 09"` (pad zonder extensie).
+- Structuur: `videos/<§> <Topic>/Concept/<n> - <Naam>` en `videos/<§> <Topic>/Exercises/Ex <nn>`.
+- Opgave-scenes: klasse `Ex<hoofdstuk>_<paragraaf>_<nn>`, bv. `Ex16_1_09`.
+
 ## Conventies
-- Bestandsnamen: snake_case. Scene-klassen: CamelCase.
-- Houd scenes kort (< ~60 s) en per concept opgesplitst.
+- Bestandsnamen: snake_case. Scene-klassen: CamelCase (opgaven: `Ex16_1_09`).
+- Houd scenes kort (< ~60 s) en per concept opgesplitst. Uitzondering: opgave-video's
+  die een "klik" moeten geven mogen ~90 s+ zijn als de taak dat zegt.
 - Taal in animaties: Engels (vak FESB), tenzij de taak anders zegt.
 
 ## Voiceover

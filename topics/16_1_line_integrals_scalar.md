@@ -32,6 +32,7 @@ $\int_C xy\,ds = \int_0^{\pi/2} 4\cos t\sin t\cdot 2\,dt = 8\cdot\tfrac12 = 4$.
 | `LineIntegralIdea` | Riemann-som langs de kromme, $n = 4 \to 40$, convergeert naar 4 |
 | `LineIntegralFence` | 3D: integraal = oppervlakte van het hek |
 | `LineIntegralComputation` | stap-voor-stap berekening |
+| `Ex16_1_09` | Opgave 9: $\int_C (x+y)\,ds$ over het lijnstuk $(0,1)\to(1,0)$. $f=1$ op $C$ → hek = rechthoek → $\sqrt2$; waarom $ds=\lvert\mathbf r'\rvert\,dt$ ($\Delta s$ vs $\Delta t$); 4-stappenmethode |
 
 ## Voiceover
 Alle drie de scenes hebben Engelse voiceover (Kokoro, stem `af_heart`). De tekst staat in de dict `VO`
