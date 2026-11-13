@@ -1150,7 +1150,7 @@ class Ex16_1_14(ExerciseScene):
         self.rest()
         dist.clear_updaters()
         d_lab.clear_updaters()
-        self.play(FadeOut(dist), FadeOut(d_lab), run_time=0.5)
+        self.play(FadeOut(dist), FadeOut(d_lab), FadeOut(t_lab), run_time=0.5)
 
         # 4 — the wire with density f
         n = 48
@@ -1192,11 +1192,11 @@ class Ex16_1_14(ExerciseScene):
         self.rest()
 
         pa, pb = self.to_screen(R(1)), self.to_screen(R(2))
-        perp = rotate_vector(normalize(pb - pa), -PI / 2)
+        perp = rotate_vector(normalize(pb - pa), PI / 2)   # away from the (1,1,1) label
         sbr = BraceBetweenPoints(pa, pb, direction=perp, color=C_DS)
         sbr_lab = MathTex(r"\Delta s = \sqrt3 \approx 1.73", font_size=28, color=C_DS)
         sbr_lab.next_to(sbr.get_center(), perp, buff=0.35)
-        dt_lab = MathTex(r"\Delta t = 1", font_size=28, color=C_DT).next_to(sbr_lab, DOWN, buff=0.12)
+        dt_lab = MathTex(r"\Delta t = 1", font_size=28, color=C_DT).next_to(sbr_lab, UP, buff=0.12)
         self.fixed(sbr, sbr_lab, dt_lab)
         text = vo[7]
         with self.voiceover(text=text) as tr:
@@ -1327,7 +1327,7 @@ class Ex16_1_14(ExerciseScene):
             vo[14],
             [r"A line integral over an infinite curve is an improper integral: a limit.",
              r"Along the diagonal ray, $ds = \sqrt3\,dt$.",
-             r"An infinite wire with inverse-square density can have finite mass — here exactly $1$."],
+             r"Infinite wire, inverse-square density: finite mass (here exactly $1$)."],
             ["One:", "Two:", "Three:"],
         )
 

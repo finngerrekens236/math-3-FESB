@@ -17,9 +17,11 @@
 | 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_09` — opgave 9, proefvideo opgaven-reeks (Kokoro) | ✅ gerenderd (-qm), wacht op feedback Finn |
 | 2026-11-13 | Setup | stijlregels opgaven-video's (`CLAUDE.md`) + gedeelde helpers `scenes/_exercise.py`; Kokoro speed 0.95 | ✅ |
 | 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_09` opnieuw: lange versie (7 hoofdstukken, 5:18) | ✅ gerenderd (-ql) + gecontroleerd; -qm nog te doen |
-| 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_10` (HW, stopt bij opgestelde integraal) | ⏳ code klaar, nog niet gerenderd (render afgebroken: geheugen) |
-| 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_14` (volledig uitgewerkt, improper integral) | ⏳ code klaar, nog niet gerenderd |
-| 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_15` (HW, stopt bij twee opgestelde integralen) | ⏳ code klaar, nog niet gerenderd |
+| 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_09` goedgekeurd door Finn (stijl = template voor volgende opgaven) | ✅ |
+| 2026-11-13 | Setup | `_exercise.py`: `ShiftCamera` — fix verschoven beeld bij start met `frame_center ≠ 0` + getallen (`DecimalNumber`) blijven fixed-in-frame | ✅ |
+| 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_10` (HW, stopt bij opgestelde integraal, 3:54) — HW-check OK | ✅ gerenderd (-qm) |
+| 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_14` (volledig uitgewerkt, improper integral, 4:10) | ✅ -ql gecontroleerd; -qm afgebroken (geheugen) — nog te doen |
+| 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_15` (HW, stopt bij twee opgestelde integralen, 3:49) — HW-check OK | ✅ -ql gecontroleerd; -qm nog te doen |
 
 ## Begrip per topic
 

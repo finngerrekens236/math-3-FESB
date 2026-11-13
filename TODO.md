@@ -14,8 +14,11 @@
 - [x] Opgave 16.1 Ex 09 (proefvideo)
 - [x] Ex 09 opnieuw, uitgebreid (±5 min)
 - [x] Ex 10 (HW), Ex 14, Ex 15 (HW) — code geschreven
-- [ ] Ex 10, 14, 15 testrenderen (--low) + frames checken; daarna alle 4 opgaven op -qm
-- [ ] Feedback Finn op 16.1-opgaven (Ex 09, 10, 14, 15)
+- [x] Ex 10, 14, 15 testrenderen (--low) + frames checken
+- [x] Ex 10 op -qm
+- [ ] Ex 14, Ex 15 en Ex 09 (lange versie) op -qm (render afgebroken: geheugen)
+- [x] Feedback Finn op Ex 09 (goed)
+- [ ] Feedback Finn op Ex 10, 14, 15
 - [ ] HW2: Ex 10 en Ex 15 zelf uitrekenen (Finn) — due 20-11-2026
 - [ ] Scene 16.2 vector fields, work, circulation, flux (HW2, due 20-11-2026)
 - [ ] Scene 16.3 conservative fields (HW2)

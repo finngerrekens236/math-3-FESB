@@ -53,7 +53,49 @@ def face_camera(mob, phi, theta):
         theta + PI / 2, OUT, about_point=mob.get_center())
 
 
+class ShiftCamera(ThreeDCamera):
+    """ThreeDCamera whose frame_center only shifts the 3D projection.
+
+    Stock ManimCE also subtracts frame_center from fixed-in-frame mobjects, and
+    caches the cairo transform with the frame_center of the first frame — so a
+    scene that *starts* off-centre gets its notebook shifted for ever. Here the
+    drawing code always sees ORIGIN; the real centre lives in `_frame_center`.
+    """
+
+    @property
+    def frame_center(self):
+        return ORIGIN
+
+    @frame_center.setter
+    def frame_center(self, point):
+        self._frame_center.move_to(point)
+
+    def project_points(self, points):
+        return super().project_points(np.asarray(points) - self._frame_center.points[0])
+
+    # Submobjects created later (DecimalNumber.set_value, become, ...) are not
+    # in fixed_in_frame_mobjects; re-collect the families of the fixed roots
+    # before every frame.
+    def add_fixed_in_frame_mobjects(self, *mobjects):
+        super().add_fixed_in_frame_mobjects(*mobjects)
+        self.__dict__.setdefault("_fixed_roots", []).extend(mobjects)
+
+    def remove_fixed_in_frame_mobjects(self, *mobjects):
+        super().remove_fixed_in_frame_mobjects(*mobjects)
+        roots = self.__dict__.get("_fixed_roots", [])
+        self._fixed_roots = [m for m in roots if all(m is not x for x in mobjects)]
+
+    def capture_mobjects(self, mobjects, **kwargs):
+        for root in self.__dict__.get("_fixed_roots", []):
+            self.fixed_in_frame_mobjects.update(root.get_family())
+        super().capture_mobjects(mobjects, **kwargs)
+
+
 class ExerciseScene(VoiceoverScene, ThreeDScene):
+    def __init__(self, **kwargs):
+        kwargs.setdefault("camera_class", ShiftCamera)
+        super().__init__(**kwargs)
+
     # ------------------------------------------------------------------ basics
     def fixed(self, *mobs):
         """Register as fixed-in-frame, but keep invisible until animated in."""
@@ -78,7 +120,7 @@ class ExerciseScene(VoiceoverScene, ThreeDScene):
     def to_screen(self, p):
         """Screen position (fixed-in-frame coordinates) of world point p, current camera."""
         cam = self.camera
-        v = cam.generate_rotation_matrix() @ (np.array(p, dtype=float) - cam.frame_center)
+        v = cam.generate_rotation_matrix() @ (np.array(p, dtype=float) - cam._frame_center.points[0])
         fd, zoom = cam.get_focal_distance(), cam.get_zoom()
         factor = fd / (fd - v[2]) if fd - v[2] > 0 else 1.0
         return np.array([v[0] * factor * zoom, v[1] * factor * zoom, 0.0])
