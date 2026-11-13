@@ -46,6 +46,30 @@ Als de gebruiker een blok met kop **TAAK VOOR CLAUDE CODE** plakt:
 - Structuur: `videos/<§> <Topic>/Concept/<n> - <Naam>` en `videos/<§> <Topic>/Exercises/Ex <nn>`.
 - Opgave-scenes: klasse `Ex<hoofdstuk>_<paragraaf>_<nn>`, bv. `Ex16_1_09`.
 
+## Opgaven-video's (stijl)
+Bouwstenen staan in `scenes/_exercise.py` (`class ExerciseScene(VoiceoverScene, ThreeDScene)`);
+elke opgave-scene erft daarvan.
+- **Lengte 3–5 min.** Eén Scene-klasse per opgave (`Ex16_1_09`); lang is oké.
+- **Hoofdstukken:** korte titelkaart (±2 s) "Chapter n — <naam>" vóór elk deel → `self.chapter(n, naam)`.
+- **Layout:** tekening links (±55%), rechts een "notebook"-paneel (`self.nb_add(...)`) waarin formules
+  onder elkaar verschijnen; oude regels worden GRAY en schuiven omhoog als de kolom vol is.
+  Bovenaan klein de checklist `1 parametrise · 2 |r'(t)| · 3 f(r(t)) · 4 integrate` (actieve stap
+  YELLOW, `self.check_step(k)`) — pas zichtbaar vanaf het hoofdstuk "The formal method".
+- **Pauzemoment:** kaart "Pause and think" + de vraag, 4 s stil met aftelbalkje, dán het antwoord
+  → `self.pause(vo_tekst, vraag)`.
+- **Tempo:** na elke nieuwe formule 1–1,5 s rust (`self.rest()`); nooit twee nieuwe formules
+  tegelijk; kernformules even oplichten (`Indicate`). Beeld volgt de zin via `self.sync(tr, tekst, "frase")`.
+- **Stem:** Kokoro via `_tts`, `speed=0.95` (`ExerciseScene.start` doet dit).
+- **Vaste kleuren:** kromme BLUE · f YELLOW (negatieve f RED) · ds/Δs GREEN · dt/Δt ORANGE ·
+  eindantwoord GREEN kader · fouten RED doorgestreept (`self.strike`).
+- **Einde:** samenvattingskaart met 3 genummerde takeaways, op scherm én gesproken (`self.summary`).
+- **HUISWERK-opgaven** (in TODO/taakblok gemarkeerd als "HW"): stoppen bij de opgestelde integraal
+  + kaart "Your turn" (`self.your_turn`). **NOOIT** het eindantwoord tonen of iets waaruit het af te
+  leiden is: geen Riemann-totaal, geen numerieke oppervlakte, geen gemiddelde waarde.
+- **Gesproken tekst:** letterlijk uit het taakblok, in `VO["exNN"]`.
+- 3D-camera: kijk niet langs een vlak lijnstuk (hek staat dan op zijn kant); `center_for(...)` houdt de
+  tekening links bij camerabewegingen. Labels in 3D: `face_camera(...)` of fixed-in-frame via `self.to_screen(p)`.
+
 ## Conventies
 - Bestandsnamen: snake_case. Scene-klassen: CamelCase (opgaven: `Ex16_1_09`).
 - Houd scenes kort (< ~60 s) en per concept opgesplitst. Uitzondering: opgave-video's

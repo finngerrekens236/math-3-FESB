@@ -1,11 +1,11 @@
 """Shared TTS helper: Kokoro (local, free) via kokoro-manim-voiceover.
 
-Model files (~330 MB) are downloaded once to <repo>/models/kokoro/ (git-ignored).
+Model files (~355 MB) are downloaded once to <repo>/models/kokoro/ (git-ignored).
 Usage in a scene file (scenes/ is on sys.path when manim loads a scene):
 
-    from _tts import kokoro, VOICE
-    self.set_speech_service(kokoro())            # default voice
-    self.set_speech_service(kokoro("am_michael"))
+    from _tts import kokoro
+    self.set_speech_service(kokoro())               # default voice, speed 1.0
+    self.set_speech_service(kokoro(speed=0.95))     # exercise videos
 """
 from pathlib import Path
 
@@ -34,10 +34,17 @@ def _ensure(name: str) -> Path:
 
 
 def kokoro(voice: str = VOICE, speed: float = 1.0) -> KokoroService:
+    kwargs = {}
+    if speed != 1.0:
+        # The package's cache key ignores speed -> separate cache dir per speed,
+        # otherwise old audio at another speed would be reused.
+        from manim import config
+        kwargs["cache_dir"] = str(Path(config.media_dir) / "voiceovers" / f"kokoro_{voice}_{speed:g}")
     return KokoroService(
         model_path=str(_ensure(MODEL_FILE)),
         voices_path=str(_ensure(VOICES_FILE)),
         voice=voice,
         speed=speed,
         lang="en-us",
+        **kwargs,
     )
