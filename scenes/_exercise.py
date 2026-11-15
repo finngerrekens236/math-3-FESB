@@ -91,17 +91,11 @@ class ShiftCamera(ThreeDCamera):
         super().capture_mobjects(mobjects, **kwargs)
 
 
-class ExerciseScene(VoiceoverScene, ThreeDScene):
-    def __init__(self, **kwargs):
-        kwargs.setdefault("camera_class", ShiftCamera)
-        super().__init__(**kwargs)
+class _Notebook:
+    """Shared helpers (notebook, cards, checklist). Use ExerciseScene (3D) or FlatScene (2D)."""
+    CHECKLIST = ["1 parametrise", r"2 $\lvert\mathbf r'(t)\rvert$", r"3 $f(\mathbf r(t))$", "4 integrate"]
 
     # ------------------------------------------------------------------ basics
-    def fixed(self, *mobs):
-        """Register as fixed-in-frame, but keep invisible until animated in."""
-        self.add_fixed_in_frame_mobjects(*mobs)
-        self.remove(*mobs)
-        return mobs[0] if len(mobs) == 1 else mobs
 
     def rest(self, t=REST):
         self.wait(t)
@@ -117,24 +111,18 @@ class ExerciseScene(VoiceoverScene, ThreeDScene):
         if target - elapsed > 0.03:
             self.wait(target - elapsed)
 
-    def to_screen(self, p):
-        """Screen position (fixed-in-frame coordinates) of world point p, current camera."""
-        cam = self.camera
-        v = cam.generate_rotation_matrix() @ (np.array(p, dtype=float) - cam._frame_center.points[0])
-        fd, zoom = cam.get_focal_distance(), cam.get_zoom()
-        factor = fd / (fd - v[2]) if fd - v[2] > 0 else 1.0
-        return np.array([v[0] * factor * zoom, v[1] * factor * zoom, 0.0])
 
     # --------------------------------------------------------- header/notebook
-    def start(self, title, problem, phi=0.0, theta=-PI / 2, frame_center=ORIGIN, problem_size=30):
+    def start(self, title, problem, phi=0.0, theta=-PI / 2, frame_center=ORIGIN, problem_size=30,
+              checklist=None):
         self.set_speech_service(kokoro(speed=SPEED))
-        self.set_camera_orientation(phi=phi, theta=theta, frame_center=frame_center)
+        self._setup_camera(phi, theta, frame_center)
 
         panel = RoundedRectangle(corner_radius=0.15, width=NB_W + 0.4, height=7.8,
                                  stroke_color=GRAY_D, stroke_width=1.5,
                                  fill_color="#0e0e0e", fill_opacity=1)
         panel.move_to([(NB_LEFT + NB_RIGHT) / 2, 0, 0])
-        self.add_fixed_in_frame_mobjects(panel)
+        self._add_static(panel)
 
         self.title_mob = Text(title, font_size=30)
         self.problem_mob = problem if isinstance(problem, Mobject) else MathTex(problem, font_size=problem_size)
@@ -143,7 +131,7 @@ class ExerciseScene(VoiceoverScene, ThreeDScene):
             hdr.scale_to_fit_width(NB_W)
         hdr.shift([NB_LEFT - hdr.get_left()[0], HEADER_TOP - hdr.get_top()[1], 0])
 
-        items = ["1 parametrise", r"2 $\lvert\mathbf r'(t)\rvert$", r"3 $f(\mathbf r(t))$", "4 integrate"]
+        items = checklist if checklist is not None else self.CHECKLIST
         self.checklist = VGroup(*[Tex(s, font_size=24) for s in items]).arrange(RIGHT, buff=0.35)
         self.checklist.set_color(GRAY_B)
         self.checklist.shift([NB_LEFT - self.checklist.get_left()[0],
@@ -167,7 +155,7 @@ class ExerciseScene(VoiceoverScene, ThreeDScene):
         if mob.width > NB_W:
             mob.scale_to_fit_width(NB_W)
         mob.shift([NB_LEFT - mob.get_left()[0], self.nb_cursor - mob.get_top()[1], 0])
-        over = max(0.0, NB_BOTTOM - mob.get_bottom()[1])
+        over = max(0.0, getattr(self, "nb_bottom", NB_BOTTOM) - mob.get_bottom()[1])
         shift = UP * over
         mob.shift(shift)
 
@@ -339,3 +327,47 @@ class ExerciseScene(VoiceoverScene, ThreeDScene):
             m.move_to([x, 0, 0], aligned_edge=LEFT)
             g.add(m)
         return g
+
+
+class ExerciseScene(_Notebook, VoiceoverScene, ThreeDScene):
+    """3D drawing on the left (fixed-in-frame notebook)."""
+
+    def __init__(self, **kwargs):
+        kwargs.setdefault("camera_class", ShiftCamera)
+        super().__init__(**kwargs)
+
+    def fixed(self, *mobs):
+        """Register as fixed-in-frame, but keep invisible until animated in."""
+        self.add_fixed_in_frame_mobjects(*mobs)
+        self.remove(*mobs)
+        return mobs[0] if len(mobs) == 1 else mobs
+
+    def _setup_camera(self, phi, theta, frame_center):
+        self.set_camera_orientation(phi=phi, theta=theta, frame_center=frame_center)
+
+    def _add_static(self, mob):
+        self.add_fixed_in_frame_mobjects(mob)
+
+    def to_screen(self, p):
+        """Screen position (fixed-in-frame coordinates) of world point p, current camera."""
+        cam = self.camera
+        v = cam.generate_rotation_matrix() @ (np.array(p, dtype=float) - cam._frame_center.points[0])
+        fd, zoom = cam.get_focal_distance(), cam.get_zoom()
+        factor = fd / (fd - v[2]) if fd - v[2] > 0 else 1.0
+        return np.array([v[0] * factor * zoom, v[1] * factor * zoom, 0.0])
+
+
+class FlatScene(_Notebook, VoiceoverScene):
+    """2D version (plain camera, less memory). Same helpers; fixed() is a no-op."""
+
+    def fixed(self, *mobs):
+        return mobs[0] if len(mobs) == 1 else mobs
+
+    def _setup_camera(self, phi, theta, frame_center):
+        pass
+
+    def _add_static(self, mob):
+        self.add(mob)
+
+    def to_screen(self, p):
+        return np.array(p, dtype=float)
