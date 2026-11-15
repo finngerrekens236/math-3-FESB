@@ -207,6 +207,8 @@ class _Notebook:
         self.fixed(line)
         self.play(Create(line), run_time=run_time)
         if owner is not None:
+            # line must live only inside owner, otherwise it stays behind when owner scrolls/fades out
+            self.remove(line)
             owner.add(line)
         return line
 

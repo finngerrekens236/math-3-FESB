@@ -1561,8 +1561,8 @@ class Ex16_2_12(ExerciseScene):
         C4 = DashedLine(P(1, 1, 0), P(1, 1, 1), color=C_NEG, stroke_width=6)
         labs = [MathTex(s, font_size=32, color=c) for s, c in
                 [("C_1", YELLOW), ("C_2", C_CURVE), ("C_3", C_NEG), ("C_4", C_NEG)]]
-        anchor = [P(0.45, 0.45, 0.62), P(0.75, 0.42, 0.18), P(0.6, 0.6, 0), P(1, 1, 0.5)]
-        offs = [np.array([-0.35, 0.2, 0]), np.array([0.35, -0.2, 0]), np.array([0.1, -0.35, 0]),
+        anchor = [P(0.45, 0.45, 0.62), P(0.85, 0.72, 0.52), P(0.6, 0.6, 0), P(1, 1, 0.5)]
+        offs = [np.array([-0.35, 0.2, 0]), np.array([0.4, -0.1, 0]), np.array([0.1, -0.35, 0]),
                 np.array([0.35, 0, 0])]
         f1 = MathTex(r"C_1:\ \mathbf r=t\,\mathbf i+t\,\mathbf j+t\,\mathbf k", font_size=32, color=YELLOW)
         f2 = MathTex(r"C_2:\ \mathbf r=t\,\mathbf i+t^2\,\mathbf j+t^4\,\mathbf k", font_size=32, color=C_CURVE)
@@ -1809,7 +1809,7 @@ class Ex16_2_12(ExerciseScene):
         # 18 — summary
         self.summary(vo[18],
                      [r"Each path: substitute, differentiate, dot product, integrate.",
-                      r"Path in pieces: add the integrals; vertical piece: only the $\mathbf k$ component counts.",
+                      r"Path in pieces: add the integrals; vertical piece: only $\mathbf k$ counts.",
                       r"$\mathbf F$ a gradient field $\Rightarrow$ the work depends only on the end points."],
                      ["One:", "Two:", "Three:"])
 
@@ -1940,7 +1940,7 @@ class Ex16_2_25(FlatScene):
         dot.add_updater(lambda m: m.move_to(A(tt.get_value() ** 2, tt.get_value())))
         tnum = DecimalNumber(2.0, num_decimal_places=2, font_size=30, color=YELLOW)
         tlab = VGroup(MathTex("t=", font_size=30, color=YELLOW), tnum).arrange(RIGHT, buff=0.08)
-        tlab.add_updater(lambda m: m.next_to(dot, LEFT, buff=0.2))
+        tlab.add_updater(lambda m: m.move_to(dot.get_center() + np.array([0.55, 0.45, 0])))
         tnum.add_updater(lambda m: m.set_value(tt.get_value()))
         s6 = MathTex(r"t:\ ", r"2", r"\ \to\ ", r"-1", r"\qquad \int_{2}^{-1}\dots\,dt", font_size=36)
         st_lab = Tex("start", font_size=26, color=YELLOW)
