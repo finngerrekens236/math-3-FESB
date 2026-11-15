@@ -22,6 +22,14 @@
 | 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_10` (HW, stopt bij opgestelde integraal, 3:54) — HW-check OK | ✅ gerenderd (-qm) |
 | 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_14` (volledig uitgewerkt, improper integral, 4:10) | ✅ -ql gecontroleerd; -qm afgebroken (geheugen) — nog te doen |
 | 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_15` (HW, stopt bij twee opgestelde integralen, 3:49) — HW-check OK | ✅ -ql gecontroleerd; -qm nog te doen |
+| 2026-11-15 | 16.1 Line integrals (scalar) | HW2 16.1-opgaven af (Finn) | ✅ |
+| 2026-11-15 | Setup | `_exercise.py`: `_Notebook`-mixin + `FlatScene` (2D, minder geheugen) naast `ExerciseScene` (3D); `render.py --no_latex_cleanup` + `TTS_CACHE_TAG` → parallel renderen in aparte terminals | ✅ |
+| 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `VectorFieldsIntro` (4:16) | ✅ gerenderd (-ql) + gecontroleerd |
+| 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `WorkLineIntegral` (5:24) | ✅ gerenderd (-ql) + gecontroleerd |
+| 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `FlowCirculationFlux` (3:56) | ✅ gerenderd (-ql) + gecontroleerd |
+| 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `Ex16_2_04` (gradient, 1:48) | ✅ gerenderd (-ql) na fix leesbaarheid; laatste versie nog te checken |
+| 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `Ex16_2_01`, `Ex16_2_12`, `Ex16_2_25`, `Ex16_2_15` | ⏳ -ql gecontroleerd, kleine fixes; her-render loopt |
+| 2026-11-15 | 16.2 Vector fields, work, circulation, flux | 720p (-qm) van alle 16.2-video's | ⏳ nog te doen (480p eerst voor feedback) |
 
 ## Begrip per topic
 
@@ -32,6 +40,6 @@
 | 14.3 Partial derivatives | ja| | — |
 | 14.5 Directional derivatives & gradient | ja | | — |
 | 16.1 Line integrals of scalar functions | | idee ∫f ds en waarom ds = \|r'(t)\| dt klikt nog niet (eerste video's te snel) | `LineIntegralIdea`, `LineIntegralFence`, `LineIntegralComputation`, `Ex16_1_09`, `Ex16_1_10` (HW), `Ex16_1_14`, `Ex16_1_15` (HW) |
-| 16.2 Vector fields, work, circulation, flux | | | — |
+| 16.2 Vector fields, work, circulation, flux | | | `VectorFieldsIntro`, `WorkLineIntegral`, `FlowCirculationFlux`, `Ex16_2_01`, `Ex16_2_04`, `Ex16_2_12`, `Ex16_2_25`, `Ex16_2_15` |
 | 16.3 Path independence, conservative fields, potential functions | | | — |
 | 16.4 Green's theorem in the plane | | | — |
