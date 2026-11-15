@@ -21,7 +21,7 @@
 - [ ] Feedback Finn op Ex 10, 14, 15
 - [x] HW2: Ex 10 en Ex 15 zelf uitrekenen (Finn) — due 20-11-2026
 - [x] 16.2: 3 conceptvideo's + Ex 01, 04, 12, 25, 15 geschreven en gerenderd (480p)
-- [ ] 16.2: her-render Ex 01, 12, 25, 15 afronden + laatste check
+- [x] 16.2: her-render Ex 01, 12, 25, 15 afronden + laatste check
 - [ ] 16.2 intro bekijken + feedback (Finn)
 - [ ] 16.2 opgaven-video's (blok B–D) bekijken + feedback (Finn)
 - [ ] 16.2-video's op 720p (-qm) renderen na feedback

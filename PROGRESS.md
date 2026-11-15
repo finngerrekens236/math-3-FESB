@@ -27,8 +27,8 @@
 | 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `VectorFieldsIntro` (4:16) | ✅ gerenderd (-ql) + gecontroleerd |
 | 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `WorkLineIntegral` (5:24) | ✅ gerenderd (-ql) + gecontroleerd |
 | 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `FlowCirculationFlux` (3:56) | ✅ gerenderd (-ql) + gecontroleerd |
-| 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `Ex16_2_04` (gradient, 1:48) | ✅ gerenderd (-ql) na fix leesbaarheid; laatste versie nog te checken |
-| 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `Ex16_2_01`, `Ex16_2_12`, `Ex16_2_25`, `Ex16_2_15` | ⏳ -ql gecontroleerd, kleine fixes; her-render loopt |
+| 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `Ex16_2_04` (gradient, 1:48) | ✅ gerenderd (-ql) + gecontroleerd |
+| 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `Ex16_2_01` (3:08), `Ex16_2_12` (4:47), `Ex16_2_25` (3:59), `Ex16_2_15` (3:01) | ✅ gerenderd (-ql) + gecontroleerd |
 | 2026-11-15 | 16.2 Vector fields, work, circulation, flux | 720p (-qm) van alle 16.2-video's | ⏳ nog te doen (480p eerst voor feedback) |
 
 ## Begrip per topic
