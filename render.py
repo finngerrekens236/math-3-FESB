@@ -82,7 +82,9 @@ def main() -> int:
     rel = scene_file.relative_to(ROOT)
     for scene in scenes:
         print(f"\n=== {scene}  ({res}) ===")
-        cmd = [python_exe(), "-m", "manim", flag, str(rel), scene]
+        # --no_latex_cleanup: manim otherwise deletes *all* .aux/.log files in media/Tex after each
+        # formula, which crashes other renders running in parallel (WinError 32).
+        cmd = [python_exe(), "-m", "manim", flag, "--no_latex_cleanup", str(rel), scene]
         if subprocess.run(cmd, cwd=ROOT, env=env).returncode != 0:
             print(f"Render failed: {scene}")
             return 1
