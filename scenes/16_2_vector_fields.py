@@ -607,7 +607,7 @@ class WorkLineIntegral(FlatScene):
             self.nb_add(l1)
             self.sync(tr, text, "Multiply them")
             self.nb_add(l2, gray=False)
-            l2c.shift(l2.get_left() - l2c[0].get_left() + (l2.get_center()[1] - l2c[0].get_center()[1]) * UP)
+            l2c.shift(l2.get_left() - l2c[0].get_left())
             self.sync(tr, text, "the lengths cancel")
             self.play(FadeOut(l2), FadeIn(l2c[0]), run_time=0.8)
             self.nb_items[-1] = l2c
@@ -1013,7 +1013,7 @@ class FlowCirculationFlux(FlatScene):
             self.nb_add(m1)
             self.sync(tr, text, "Then F dot n d s")
             self.nb_add(m2, gray=False)
-            m2c.shift(m2.get_left() - m2c[0].get_left() + (m2.get_center()[1] - m2c[0].get_center()[1]) * UP)
+            m2c.shift(m2.get_left() - m2c[0].get_left())
             self.sync(tr, text, "The d s disappears")
             self.play(FadeOut(m2), FadeIn(m2c[0]), run_time=0.8)
             self.nb_items[-1] = m2c
@@ -1380,11 +1380,11 @@ class Ex16_2_04(ExerciseScene):
             parts = []
             for (term, col), o in zip([("xy", C_XY), ("yz", C_YZ), ("xz", C_XZ)], outs):
                 parts.append((rf"\frac{{\partial}}{{\partial {var}}}({term})={o}", col if o != "0" else GRAY))
-            m = MathTex(*[p for p, _ in parts], rf"\ \Rightarrow\ g_{var}={res}", font_size=30,
-                        arg_separator=r",\ \ ")
+            terms = MathTex(*[p for p, _ in parts], font_size=34, arg_separator=r",\ \ ")
             for k, (_, col) in enumerate(parts):
-                m[k].set_color(col)
-            return m
+                terms[k].set_color(col)
+            result = MathTex(rf"\Rightarrow\ g_{var}={res}", font_size=36)
+            return VGroup(terms, result).arrange(DOWN, aligned_edge=LEFT, buff=0.12)
 
         specs = [("x", ["y", "0", "z"], "y+z", vo[2], ["In x y", "y z contains", "x z gives", "Together"]),
                  ("y", ["x", "z", "0"], "x+z", vo[3], ["x y gives", "y z gives", "and x z", "So we get"]),
@@ -1396,14 +1396,14 @@ class Ex16_2_04(ExerciseScene):
                 m.scale_to_fit_width(NB_W)
             with self.voiceover(text=text) as tr:
                 self.check_step(k)
-                self.nb_add(m, anim=FadeIn(m[0]), gray=True)
+                self.nb_add(m, anim=FadeIn(m[0][0]), gray=True)
                 for j in range(3):
                     if j > 0:
                         self.sync(tr, text, phrases[j])
-                        self.play(FadeIn(m[j]), run_time=0.5)
-                    self.play(Indicate(big[2 * j + 1], color=m[j].get_color()), run_time=0.6)
+                        self.play(FadeIn(m[0][j]), run_time=0.5)
+                    self.play(Indicate(big[2 * j + 1], color=m[0][j].get_color()), run_time=0.6)
                 self.sync(tr, text, phrases[3])
-                self.play(Write(m[3]), run_time=0.6)
+                self.play(Write(m[1]), run_time=0.6)
             results.append(m)
             self.rest()
 

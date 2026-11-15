@@ -39,7 +39,10 @@ def kokoro(voice: str = VOICE, speed: float = 1.0) -> KokoroService:
         # The package's cache key ignores speed -> separate cache dir per speed,
         # otherwise old audio at another speed would be reused.
         from manim import config
-        kwargs["cache_dir"] = str(Path(config.media_dir) / "voiceovers" / f"kokoro_{voice}_{speed:g}")
+        # TTS_CACHE_TAG: separate cache per parallel render process (cache.json is not process-safe)
+        import os
+        tag = os.environ.get("TTS_CACHE_TAG", "")
+        kwargs["cache_dir"] = str(Path(config.media_dir) / "voiceovers" / f"kokoro_{voice}_{speed:g}{tag}")
     return KokoroService(
         model_path=str(_ensure(MODEL_FILE)),
         voices_path=str(_ensure(VOICES_FILE)),
