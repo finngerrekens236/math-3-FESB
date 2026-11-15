@@ -2190,12 +2190,12 @@ class Ex16_2_15(FlatScene):
         def fsc(p):
             x, y = ax.p2c(p)
             return np.array([0.0, x * x + y * y, 0.0])
-        vf = ArrowVectorField(fsc, x_range=[A(0.25, 0)[0], A(3.3, 0)[0], 0.75], y_range=[A(0, 0.1)[1], A(0, 3.2)[1], 0.75],
-                              length_func=lambda n: min(0.72, 0.05 * n + 0.08))
+        vf = ArrowVectorField(fsc, x_range=[A(0.25, 0)[0], A(3.3, 0)[0], 0.75], y_range=[A(0, 0.1)[1], A(0, 2.8)[1], 0.75],
+                              length_func=lambda n: min(0.6, 0.04 * n + 0.08))
         vf.set_opacity(0.6)
         t1 = Tex(r"$\perp$ arrows $\to$ nothing", font_size=28, color=C_CURVE).move_to(A(1.5, -0.35) + DOWN * 0.15)
-        t2 = Tex(r"with the arrows, growing", font_size=28, color=C_TEAL).next_to(C2, RIGHT, buff=0.1).shift(UP * 0.6)
-        t2.rotate(PI / 2)
+        t2 = Tex(r"with the arrows, growing", font_size=28, color=C_TEAL).move_to(A(1.6, 2.2))
+        t2.add_background_rectangle(opacity=0.85, buff=0.08)
         text = vo[10]
         with self.voiceover(text=text) as tr:
             self.play(FadeIn(vf), run_time=1.0)
