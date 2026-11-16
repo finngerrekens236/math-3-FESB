@@ -30,7 +30,7 @@
 | 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `Ex16_2_04` (gradient, 1:48) | ✅ gerenderd (-ql) + gecontroleerd |
 | 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `Ex16_2_01` (3:08), `Ex16_2_12` (4:47), `Ex16_2_25` (3:59), `Ex16_2_15` (3:01) | ✅ gerenderd (-ql) + gecontroleerd |
 | 2026-11-15 | 16.2 Vector fields, work, circulation, flux | 720p (-qm) van alle 16.2-video's | ⏳ nog te doen (480p eerst voor feedback) |
-| 2026-11-16 | 16.3 Path independence, conservative fields, potentials | `scenes/16_3_conservative_fields.py`: 8 scenes geschreven (`ConservativeIntro`, `TestAndPotential`, `Ex16_3_01/03/07/11/18/20`) | ⏳ NIET gerenderd (Finn rendert zelf); py_compile + statische check OK |
+| 2026-11-16 | 16.3 Path independence, conservative fields, potentials | `ConservativeIntro` (4:55), `TestAndPotential` (5:44), `Ex16_3_01` (2:02), `Ex16_3_03` (2:21), `Ex16_3_07` (2:01), `Ex16_3_11` (3:18), `Ex16_3_18` (2:42), `Ex16_3_20` (2:38) | ✅ gerenderd (-ql) + gecontroleerd (fix: kaders bleven staan na nb_clear) |
 
 ## Begrip per topic
 
