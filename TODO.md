@@ -16,7 +16,7 @@
 - [x] Ex 10 (HW), Ex 14, Ex 15 (HW) — code geschreven
 - [x] Ex 10, 14, 15 testrenderen (--low) + frames checken
 - [x] Ex 10 op -qm
-- [ ] 16.1 Ex 14 en Ex 09 (lange versie) opnieuw renderen — optioneel (HW 16.1 is af)
+- [x] 16.1 Ex 14 en Ex 09 (lange versie) opnieuw renderen (480p)
 - [x] Feedback Finn op Ex 09 (goed)
 - [ ] Feedback Finn op Ex 10, 14, 15
 - [x] HW2: Ex 10 en Ex 15 zelf uitrekenen (Finn) — due 20-11-2026

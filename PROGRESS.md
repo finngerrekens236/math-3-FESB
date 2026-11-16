@@ -20,8 +20,8 @@
 | 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_09` goedgekeurd door Finn (stijl = template voor volgende opgaven) | ✅ |
 | 2026-11-13 | Setup | `_exercise.py`: `ShiftCamera` — fix verschoven beeld bij start met `frame_center ≠ 0` + getallen (`DecimalNumber`) blijven fixed-in-frame | ✅ |
 | 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_10` (HW, stopt bij opgestelde integraal, 3:54) — HW-check OK | ✅ gerenderd (-qm) |
-| 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_14` (volledig uitgewerkt, improper integral, 4:10) | ✅ -ql gecontroleerd; -qm afgebroken (geheugen) — nog te doen |
-| 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_15` (HW, stopt bij twee opgestelde integralen, 3:49) — HW-check OK | ✅ -ql gecontroleerd; -qm nog te doen |
+| 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_14` (volledig uitgewerkt, improper integral, 4:10) | ✅ gerenderd (-ql) mét fixes + gecontroleerd (2026-11-16) |
+| 2026-11-13 | 16.1 Line integrals (scalar) | `Ex16_1_15` (HW, stopt bij twee opgestelde integralen, 3:49) — HW-check OK | ✅ gerenderd (-ql) + gecontroleerd |
 | 2026-11-15 | 16.1 Line integrals (scalar) | HW2 16.1-opgaven af (Finn) | ✅ |
 | 2026-11-15 | Setup | `_exercise.py`: `_Notebook`-mixin + `FlatScene` (2D, minder geheugen) naast `ExerciseScene` (3D); `render.py --no_latex_cleanup` + `TTS_CACHE_TAG` → parallel renderen in aparte terminals | ✅ |
 | 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `VectorFieldsIntro` (4:16) | ✅ gerenderd (-ql) + gecontroleerd |
@@ -31,6 +31,7 @@
 | 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `Ex16_2_01` (3:08), `Ex16_2_12` (4:47), `Ex16_2_25` (3:59), `Ex16_2_15` (3:01) | ✅ gerenderd (-ql) + gecontroleerd |
 | 2026-11-15 | 16.2 Vector fields, work, circulation, flux | 720p (-qm) van alle 16.2-video's | ⏳ nog te doen (480p eerst voor feedback) |
 | 2026-11-16 | 16.3 Path independence, conservative fields, potentials | `ConservativeIntro` (4:55), `TestAndPotential` (5:44), `Ex16_3_01` (2:02), `Ex16_3_03` (2:21), `Ex16_3_07` (2:01), `Ex16_3_11` (3:18), `Ex16_3_18` (2:42), `Ex16_3_20` (2:38) | ✅ gerenderd (-ql) + gecontroleerd (fix: kaders bleven staan na nb_clear) |
+| 2026-11-16 | 16.1 Line integrals (scalar) | `Ex16_1_09` lange versie (5:18) + `Ex16_1_14` opnieuw → `videos/16.1 …/Exercises/` | ✅ gerenderd (-ql) + gecontroleerd — 16.1 compleet |
 
 ## Begrip per topic
 
