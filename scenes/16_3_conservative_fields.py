@@ -24,16 +24,15 @@ import numpy as np
 from _exercise import (FlatScene, C_CURVE, C_F, C_NEG, C_DS, C_DT, C_ANSWER, C_WRONG, NB_LEFT, NB_RIGHT, NB_W,
                        LEFT_CENTER)
 
-_D = "16.3 Path independence, conservative fields, potentials"
 OUTPUT = {
-    "ConservativeIntro": f"{_D}/Concept/1 - Path independence & potential functions",
-    "TestAndPotential": f"{_D}/Concept/2 - Component test & finding potentials",
-    "Ex16_3_01": f"{_D}/Exercises/Ex 01",
-    "Ex16_3_03": f"{_D}/Exercises/Ex 03",
-    "Ex16_3_07": f"{_D}/Exercises/Ex 07",
-    "Ex16_3_11": f"{_D}/Exercises/Ex 11",
-    "Ex16_3_18": f"{_D}/Exercises/Ex 18",
-    "Ex16_3_20": f"{_D}/Exercises/Ex 20",
+    "ConservativeIntro": "16.3 Path independence, conservative fields, potentials/Concept/1 - Path independence & potential functions",
+    "TestAndPotential": "16.3 Path independence, conservative fields, potentials/Concept/2 - Component test & finding potentials",
+    "Ex16_3_01": "16.3 Path independence, conservative fields, potentials/Exercises/Ex 01",
+    "Ex16_3_03": "16.3 Path independence, conservative fields, potentials/Exercises/Ex 03",
+    "Ex16_3_07": "16.3 Path independence, conservative fields, potentials/Exercises/Ex 07",
+    "Ex16_3_11": "16.3 Path independence, conservative fields, potentials/Exercises/Ex 11",
+    "Ex16_3_18": "16.3 Path independence, conservative fields, potentials/Exercises/Ex 18",
+    "Ex16_3_20": "16.3 Path independence, conservative fields, potentials/Exercises/Ex 20",
 }
 
 C_M, C_N, C_P = BLUE, ORANGE, PINK          # components M, N, P
