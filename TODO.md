@@ -30,5 +30,8 @@
 - [x] 16.3 renderen (480p) + frames gecontroleerd
 - [ ] 16.3 video's bekijken + feedback (Finn)
 - [ ] HW2 16.3: opgaven 2, 6, 8, 9, 19, 21 zelf maken (Finn) — due 20-11-2026
-- [ ] Scene 16.4 Green's theorem (HW2)
+- [x] 16.4: 3 conceptvideo's + Ex 05, 07, 09, 22, 26 geschreven (code)
+- [ ] 16.4 renderen (Finn)
+- [ ] 16.4 video's bekijken + feedback (Finn)
+- [ ] HW2 16.4: opgaven 6, 8, 11, 23, 27 zelf maken (Finn) — due 20-11-2026
 - [ ] HW3/HW4-topics toevoegen zodra bekend

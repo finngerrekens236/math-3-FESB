@@ -32,6 +32,7 @@
 | 2026-11-15 | 16.2 Vector fields, work, circulation, flux | 720p (-qm) van alle 16.2-video's | ⏳ nog te doen (480p eerst voor feedback) |
 | 2026-11-16 | 16.3 Path independence, conservative fields, potentials | `ConservativeIntro` (4:55), `TestAndPotential` (5:44), `Ex16_3_01` (2:02), `Ex16_3_03` (2:21), `Ex16_3_07` (2:01), `Ex16_3_11` (3:18), `Ex16_3_18` (2:42), `Ex16_3_20` (2:38) | ✅ gerenderd (-ql) + gecontroleerd (fix: kaders bleven staan na nb_clear) |
 | 2026-11-16 | 16.1 Line integrals (scalar) | `Ex16_1_09` lange versie (5:18) + `Ex16_1_14` opnieuw → `videos/16.1 …/Exercises/` | ✅ gerenderd (-ql) + gecontroleerd — 16.1 compleet |
+| 2026-11-16 | 16.4 Green's theorem | `scenes/16_4_greens_theorem.py`: 8 scenes geschreven (`DoubleIntegralRefresher`, `CurlDivergence`, `GreensTheorem`, `Ex16_4_05/07/09/22/26`) | ⏳ NIET gerenderd (Finn rendert zelf); py_compile + import + sync/LaTeX-check OK |
 
 ## Begrip per topic
 
@@ -44,4 +45,4 @@
 | 16.1 Line integrals of scalar functions | | idee ∫f ds en waarom ds = \|r'(t)\| dt klikt nog niet (eerste video's te snel) | `LineIntegralIdea`, `LineIntegralFence`, `LineIntegralComputation`, `Ex16_1_09`, `Ex16_1_10` (HW), `Ex16_1_14`, `Ex16_1_15` (HW) |
 | 16.2 Vector fields, work, circulation, flux | | | `VectorFieldsIntro`, `WorkLineIntegral`, `FlowCirculationFlux`, `Ex16_2_01`, `Ex16_2_04`, `Ex16_2_12`, `Ex16_2_25`, `Ex16_2_15` |
 | 16.3 Path independence, conservative fields, potential functions | | | `ConservativeIntro`, `TestAndPotential`, `Ex16_3_01`, `Ex16_3_03`, `Ex16_3_07`, `Ex16_3_11`, `Ex16_3_18`, `Ex16_3_20` |
-| 16.4 Green's theorem in the plane | | | — |
+| 16.4 Green's theorem in the plane | | | `DoubleIntegralRefresher`, `CurlDivergence`, `GreensTheorem`, `Ex16_4_05`, `Ex16_4_07`, `Ex16_4_09`, `Ex16_4_22`, `Ex16_4_26` |
