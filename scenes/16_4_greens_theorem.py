@@ -128,7 +128,7 @@ def strip(ax, xt, bottom, top, w=0.03):
 def strip_labels(ax, xt, bottom, top, btex, ttex, size=26):
     lb = MathTex(btex, font_size=size, color=C_STRIP)
     lt = MathTex(ttex, font_size=size, color=C_STRIP)
-    lb.add_updater(lambda m: m.next_to(ax.c2p(xt.get_value(), bottom(xt.get_value())), DOWN, buff=0.18))
+    lb.add_updater(lambda m: m.next_to(ax.c2p(xt.get_value(), bottom(xt.get_value())), DOWN, buff=0.55))
     lt.add_updater(lambda m: m.next_to(ax.c2p(xt.get_value(), top(xt.get_value())), UP, buff=0.15))
     return VGroup(lb, lt)
 
@@ -315,7 +315,7 @@ class DoubleIntegralRefresher(FlatScene):
         bot, topf = (lambda x: 0.0), (lambda x: x)
         reg = region_between(ax, bot, topf, 0, 1)
         bnd = boundary_between(ax, bot, topf, 0, 1)
-        lines = VGroup(MathTex("y=0", font_size=26).next_to(ax.c2p(0.5, 0), DOWN, buff=0.45),
+        lines = VGroup(MathTex("y=0", font_size=26).next_to(ax.c2p(0.15, 0), UP, buff=0.12),
                        MathTex("x=1", font_size=26).next_to(ax.c2p(1, 0.5), RIGHT, buff=0.12),
                        MathTex("y=x", font_size=26).next_to(ax.c2p(0.45, 0.5), UL, buff=0.05))
         xt = ValueTracker(0.1)
@@ -573,11 +573,11 @@ class CurlDivergence(FlatScene):
         self.chapter(2, "Four example fields")
         panels = [make_panel(k, hole=(k == 3)) for k in range(4)]
         wheels = [paddle(0.3).move_to(PANEL_C[k] + DOWN * 0.15) for k in range(4)]
-        curl_t = [MathTex(s, font_size=28, color=C_CURL) for s in
+        curl_t = [MathTex(s, font_size=30, color=C_CURL) for s in
                   [r"\text{curl}=0", r"\text{curl}=2c", r"\text{curl}=0-1=-1", r"\text{curl}=0\ (\text{except }O)"]]
         for k, t in enumerate(curl_t):
             t.next_to(panels[k][0], DOWN, buff=0.05).shift(UP * 0.4)
-            t.add_background_rectangle(opacity=0.85, buff=0.04)
+            t.add_background_rectangle(opacity=1.0, buff=0.04)
         text = vo[7]
         with self.voiceover(text=text) as tr:
             self.play(FadeIn(panels[0]), run_time=0.8)
@@ -628,7 +628,7 @@ class CurlDivergence(FlatScene):
         nlab = MathTex(r"\mathbf n", font_size=32, color=C_DIV).next_to(nrm[1].get_end(), UP, buff=0.05)
         text = vo[12]
         with self.voiceover(text=text) as tr:
-            self.play(Create(rect), FadeIn(labs), run_time=0.8)
+            self.play(Create(rect), FadeIn(labs[0]), run_time=0.8)
             self.sync(tr, text, "using the outward normal")
             self.play(LaggedStart(*[GrowArrow(a) for a in nrm], lag_ratio=0.2), FadeIn(nlab), run_time=1.2)
         self.rest()
@@ -659,7 +659,7 @@ class CurlDivergence(FlatScene):
         with self.voiceover(text=text) as tr:
             self.nb_add(n14, buff=0.4, gray=False)
             boxed(self, n14, color=C_DIV)
-            self.play(FadeOut(VGroup(rect, labs, nrm, nlab)), run_time=0.4)
+            self.play(FadeOut(VGroup(rect, labs[0], nrm, nlab)), run_time=0.4)
             self.sync(tr, text, "Positive divergence")
             self.play(FadeIn(srcs[0]), FadeIn(sl2[0]), run_time=0.6)
             self.sync(tr, text, "Negative divergence")
@@ -669,11 +669,11 @@ class CurlDivergence(FlatScene):
 
         # 15 — divergence of the four fields
         panels = [make_panel(k, hole=(k == 3)) for k in range(4)]
-        div_t = [MathTex(s, font_size=28, color=C_DIV) for s in [r"\text{div}=2c", r"\text{div}=0", r"\text{div}=0",
+        div_t = [MathTex(s, font_size=32, color=PURPLE_A) for s in [r"\text{div}=2c", r"\text{div}=0", r"\text{div}=0",
                                                                  r"\text{div}=0"]]
         for k, t in enumerate(div_t):
             t.next_to(panels[k][0], DOWN, buff=0.05).shift(UP * 0.4)
-            t.add_background_rectangle(opacity=0.85, buff=0.04)
+            t.add_background_rectangle(opacity=1.0, buff=0.04)
         inc = Tex(r"div $=0$ $\to$ incompressible", font_size=30, color=YELLOW)
         text = vo[15]
         with self.voiceover(text=text) as tr:
@@ -1505,7 +1505,8 @@ class Ex16_4_26(FlatScene):
             self.sync(tr, text, "As t goes")
             self.add(dot)
             self.play(tt.animate.set_value(2 * PI), run_time=3.0, rate_func=linear)
-            self.play(FadeIn(tip_at(E, PI / 4)), FadeIn(tip_at(E, 5 * PI / 4)), run_time=0.4)
+            etips = VGroup(tip_at(E, PI / 4), tip_at(E, 5 * PI / 4))
+            self.play(FadeIn(etips), run_time=0.4)
         self.rest()
 
         steps = [(3, r"x=a\cos t,\ y=b\sin t,\ dx=-a\sin t\,dt,\ dy=b\cos t\,dt", 0, 32),
@@ -1526,6 +1527,7 @@ class Ex16_4_26(FlatScene):
         f7 = MathTex(r"a=b=r\ \Rightarrow\ \pi r^2\ \checkmark", font_size=38, color=C_ANSWER)
         text = vo[7]
         with self.voiceover(text=text) as tr:
+            self.play(FadeOut(etips), run_time=0.3)
             self.play(a_t.animate.set_value(1.4), b_t.animate.set_value(1.4), run_time=1.5)
             self.nb_add(f7, gray=False)
         self.rest()
