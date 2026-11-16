@@ -65,7 +65,7 @@ def boxed(scene, mob, color=C_ANSWER, buff=0.12):
     """Draw a frame around a notebook line; the frame becomes part of the line."""
     b = SurroundingRectangle(mob, color=color, buff=buff)
     scene.play(Create(b), run_time=0.6)
-    mob.add(b)
+    put_in(scene, mob, b)      # frame lives only inside mob (else it stays behind after nb_clear)
     return b
 
 
@@ -381,7 +381,7 @@ class ConservativeIntro(FlatScene):
             m = VMobject(stroke_color=col, stroke_width=2.5, stroke_opacity=0.85)
             m.set_points_smoothly([S(x, y) for x, y in zip(xs[ok], ys[ok])])
             contours.add(m)
-        cl = Tex("level curves of $f$", font_size=26, color=GRAY_B).move_to(S(-2.0, 2.9))
+        cl = Tex("level curves of $f$", font_size=26, color=GRAY_B).move_to(S(1.9, -2.7))
         Am, Bm = np.array([-2.0, -1.5]), np.array([2.0, 1.5])
         paths = [lambda s: Am + s * (Bm - Am),
                  lambda s: Am + s * (Bm - Am) + 1.6 * np.sin(PI * s) * np.array([-0.6, 0.8]),
