@@ -26,6 +26,9 @@
 - [ ] 16.2 opgaven-video's (blok B–D) bekijken + feedback (Finn)
 - [ ] 16.2-video's op 720p (-qm) renderen na feedback
 - [ ] HW2 16.2: opgaven 2, 3, 11, 23, 24 zelf maken (Finn) — due 20-11-2026
-- [ ] Scene 16.3 conservative fields (HW2)
+- [x] 16.3: 2 conceptvideo's + Ex 01, 03, 07, 11, 18, 20 geschreven (code)
+- [ ] 16.3 renderen (Finn, één voor één)
+- [ ] 16.3 video's bekijken + feedback (Finn)
+- [ ] HW2 16.3: opgaven 2, 6, 8, 9, 19, 21 zelf maken (Finn) — due 20-11-2026
 - [ ] Scene 16.4 Green's theorem (HW2)
 - [ ] HW3/HW4-topics toevoegen zodra bekend

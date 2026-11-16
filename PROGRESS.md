@@ -30,6 +30,7 @@
 | 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `Ex16_2_04` (gradient, 1:48) | ✅ gerenderd (-ql) + gecontroleerd |
 | 2026-11-15 | 16.2 Vector fields, work, circulation, flux | `Ex16_2_01` (3:08), `Ex16_2_12` (4:47), `Ex16_2_25` (3:59), `Ex16_2_15` (3:01) | ✅ gerenderd (-ql) + gecontroleerd |
 | 2026-11-15 | 16.2 Vector fields, work, circulation, flux | 720p (-qm) van alle 16.2-video's | ⏳ nog te doen (480p eerst voor feedback) |
+| 2026-11-16 | 16.3 Path independence, conservative fields, potentials | `scenes/16_3_conservative_fields.py`: 8 scenes geschreven (`ConservativeIntro`, `TestAndPotential`, `Ex16_3_01/03/07/11/18/20`) | ⏳ NIET gerenderd (Finn rendert zelf); py_compile + statische check OK |
 
 ## Begrip per topic
 
@@ -41,5 +42,5 @@
 | 14.5 Directional derivatives & gradient | ja | | — |
 | 16.1 Line integrals of scalar functions | | idee ∫f ds en waarom ds = \|r'(t)\| dt klikt nog niet (eerste video's te snel) | `LineIntegralIdea`, `LineIntegralFence`, `LineIntegralComputation`, `Ex16_1_09`, `Ex16_1_10` (HW), `Ex16_1_14`, `Ex16_1_15` (HW) |
 | 16.2 Vector fields, work, circulation, flux | | | `VectorFieldsIntro`, `WorkLineIntegral`, `FlowCirculationFlux`, `Ex16_2_01`, `Ex16_2_04`, `Ex16_2_12`, `Ex16_2_25`, `Ex16_2_15` |
-| 16.3 Path independence, conservative fields, potential functions | | | — |
+| 16.3 Path independence, conservative fields, potential functions | | | `ConservativeIntro`, `TestAndPotential`, `Ex16_3_01`, `Ex16_3_03`, `Ex16_3_07`, `Ex16_3_11`, `Ex16_3_18`, `Ex16_3_20` |
 | 16.4 Green's theorem in the plane | | | — |
