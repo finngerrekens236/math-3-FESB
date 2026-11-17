@@ -32,7 +32,7 @@
 | 2026-11-15 | 16.2 Vector fields, work, circulation, flux | 720p (-qm) van alle 16.2-video's | ⏳ nog te doen (480p eerst voor feedback) |
 | 2026-11-16 | 16.3 Path independence, conservative fields, potentials | `ConservativeIntro` (4:55), `TestAndPotential` (5:44), `Ex16_3_01` (2:02), `Ex16_3_03` (2:21), `Ex16_3_07` (2:01), `Ex16_3_11` (3:18), `Ex16_3_18` (2:42), `Ex16_3_20` (2:38) | ✅ gerenderd (-ql) + gecontroleerd (fix: kaders bleven staan na nb_clear) |
 | 2026-11-16 | 16.1 Line integrals (scalar) | `Ex16_1_09` lange versie (5:18) + `Ex16_1_14` opnieuw → `videos/16.1 …/Exercises/` | ✅ gerenderd (-ql) + gecontroleerd — 16.1 compleet |
-| 2026-11-16 | 16.4 Green's theorem | `scenes/16_4_greens_theorem.py`: 8 scenes geschreven (`DoubleIntegralRefresher`, `CurlDivergence`, `GreensTheorem`, `Ex16_4_05/07/09/22/26`) | ⏳ NIET gerenderd (Finn rendert zelf); py_compile + import + sync/LaTeX-check OK |
+| 2026-11-17 | 16.4 Green's theorem | `DoubleIntegralRefresher` (3:30), `CurlDivergence` (5:06), `GreensTheorem` (4:26), `Ex16_4_05` (2:48), `Ex16_4_07` (2:42), `Ex16_4_09` (3:53), `Ex16_4_22` (2:10), `Ex16_4_26` (2:23) | ✅ gerenderd (-ql, los proces) + gecontroleerd; fixes: strip-labels, curl/div-labels, ellips-pijltjes |
 
 ## Begrip per topic
 
